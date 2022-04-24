@@ -1,0 +1,19 @@
+2022-04-24 23:32:45.008 [DEBU] swagger ui is serving at address: http://127.0.0.1:8080/swagger/
+2022-04-24 23:32:45.010 [INFO] openapi specification is serving at address: http://127.0.0.1:8080/api.json
+2022-04-24 23:32:45.010 [INFO] pid[6552]: http server started listening on [:8080]
+
+  ADDRESS | METHOD |          ROUTE           |                             HANDLER                             |              MIDDLEWARE
+----------|--------|--------------------------|-----------------------------------------------------------------|----------------------------------------
+  :8080   | ALL    | /*                       | github.com/gogf/gf/v2/net/ghttp.internalMiddlewareServerTracing | GLOBAL MIDDLEWARE
+----------|--------|--------------------------|-----------------------------------------------------------------|----------------------------------------
+  :8080   | ALL    | /api.json                | github.com/gogf/gf/v2/net/ghttp.(*Server).openapiSpec           |
+----------|--------|--------------------------|-----------------------------------------------------------------|----------------------------------------
+  :8080   | GET    | /api/v1/demo/demo        | github.com/jiayg/liar/internal/controller.(*cDemo).Demo                          | ghttp.MiddlewareHandlerResponse
+          |        |                          |                                                                 | middleware.IMiddleware.MiddlewareCORS
+----------|--------|--------------------------|-----------------------------------------------------------------|----------------------------------------
+  :8080   | GET    | /api/v1/system/role/list | github.com/jiayg/liar/internal/controller.(*roleController).List                 | ghttp.MiddlewareHandlerResponse
+          |        |                          |                                                                 | middleware.IMiddleware.MiddlewareCORS
+----------|--------|--------------------------|-----------------------------------------------------------------|----------------------------------------
+  :8080   | ALL    | /swagger/*               | github.com/gogf/gf/v2/net/ghttp.(*Server).swaggerUI             | HOOK_BEFORE_SERVE
+----------|--------|--------------------------|-----------------------------------------------------------------|----------------------------------------
+

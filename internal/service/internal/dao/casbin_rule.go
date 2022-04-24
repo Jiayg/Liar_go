@@ -5,7 +5,7 @@
 package dao
 
 import (
-	"liar/internal/service/internal/dao/internal"
+	"github.com/jiayg/liar/internal/service/internal/dao/internal"
 )
 
 // casbinRuleDao is the data access object for table casbin_rule.

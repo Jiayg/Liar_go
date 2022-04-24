@@ -1,10 +1,10 @@
 package main
 
 import (
-	_ "liar/internal/packed"
+	_ "github.com/jiayg/liar/internal/packed"
 
 	"github.com/gogf/gf/v2/os/gctx"
-	"liar/internal/cmd"
+	"github.com/jiayg/liar/internal/cmd"
 )
 
 func main() {

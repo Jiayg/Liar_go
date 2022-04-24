@@ -5,7 +5,7 @@
 package dao
 
 import (
-	"liar/internal/service/internal/dao/internal"
+	"github.com/jiayg/liar/internal/service/internal/dao/internal"
 )
 
 // sysLoginLogDao is the data access object for table sys_login_log.
