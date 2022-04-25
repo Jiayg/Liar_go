@@ -22,8 +22,7 @@ type IRole interface {
 	// DeleteByIds(ctx context.Context, ids []int64) (err error)
 }
 
-type roleImpl struct {
-}
+type roleImpl struct{}
 
 var roleService = roleImpl{}
 
@@ -31,6 +30,7 @@ func Role() IRole {
 	return IRole(&roleService)
 }
 
+// 获取角色分页列表
 func (s *roleImpl) GetRoleListSearch(ctx context.Context, req *apiv1.RoleListReq) (res *apiv1.RoleListRes, err error) {
 	res = new(apiv1.RoleListRes)
 	g.Try(func() {

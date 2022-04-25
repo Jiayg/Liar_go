@@ -8,6 +8,7 @@ require (
 )
 
 require (
+	github.com/casbin/casbin/v2 v2.44.2
 	github.com/kr/pretty v0.2.1 // indirect
 	github.com/mattn/go-runewidth v0.0.13 // indirect
 	golang.org/x/sys v0.0.0-20211117180635-dee7805ff2e1 // indirect

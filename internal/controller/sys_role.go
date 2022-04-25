@@ -13,7 +13,7 @@ type roleController struct {
 	BaseController
 }
 
-// 角色列表
+// 角色分页列表
 func (c *roleController) List(ctx context.Context, req *apiv1.RoleListReq) (res *apiv1.RoleListRes, err error) {
 	res, err = service.Role().GetRoleListSearch(ctx, req)
 	return
