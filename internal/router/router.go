@@ -11,9 +11,8 @@ func BindController(group *ghttp.RouterGroup) {
 	group.Group("/api/v1", func(group *ghttp.RouterGroup) {
 		group.Middleware(ghttp.MiddlewareHandlerResponse)
 		group.Middleware(middleware.Middleware().MiddlewareCORS)
-		sysRouter(group)
 		demoRouter(group)
-		commRouter(group)
+		sysRouter(group)
 	})
 
 }
@@ -42,16 +41,5 @@ func demoRouter(group *ghttp.RouterGroup) {
 		group.Bind(
 			controller.Demo,
 		)
-	})
-}
-
-// 绑定公共路由
-func commRouter(group *ghttp.RouterGroup) {
-	group.Group("/pub", func(group *ghttp.RouterGroup) {
-		group.Group("/captcha", func(group *ghttp.RouterGroup) {
-			group.Bind(
-				controller.Captcha,
-			)
-		})
 	})
 }

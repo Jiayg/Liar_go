@@ -20,3 +20,33 @@ type SysAuthRuleInfoRes struct {
 	IsLink    uint   `orm:"is_link" json:"isLink"`        // 是否外链 1是 0否
 	LinkUrl   string `orm:"link_url" json:"linkUrl"`      //链接地址
 }
+
+// SysAuthRuleTreeRes 菜单树形结构
+type SysAuthRuleTreeRes struct {
+	*SysAuthRuleInfoRes
+	Children []*SysAuthRuleTreeRes `json:"children"`
+}
+
+type UserMenu struct {
+	Id        uint   `json:"id"`
+	Pid       uint   `json:"pid"`
+	Name      string `json:"name"`
+	Component string `json:"component"`
+	Path      string `json:"path"`
+	*MenuMeta `json:"meta"`
+}
+
+type UserMenus struct {
+	*UserMenu `json:""`
+	Children  []*UserMenus `json:"children"`
+}
+
+type MenuMeta struct {
+	Icon        string `json:"icon"`
+	Title       string `json:"title"`
+	IsLink      string `json:"isLink"`
+	IsHide      bool   `json:"isHide"`
+	IsKeepAlive bool   `json:"isKeepAlive"`
+	IsAffix     bool   `json:"isAffix"`
+	IsIframe    bool   `json:"isIframe"`
+}

@@ -8,7 +8,7 @@ import (
 )
 
 type RoleListReq struct {
-	g.Meta   `path:"/role/list" tags:"角色管理" method:"get" summary:"角色列表"`
+	g.Meta   `path:"/role" tags:"角色管理" method:"get" summary:"角色列表"`
 	RoleName string `p:"roleName"`   //参数名称
 	Status   string `p:"roleStatus"` //状态
 	PageReq
@@ -30,7 +30,7 @@ type RoleGetParamsRes struct {
 }
 
 type RoleAddReq struct {
-	g.Meta    `path:"/role/add" tags:"角色管理" method:"post" summary:"添加角色"`
+	g.Meta    `path:"/role" tags:"角色管理" method:"post" summary:"添加角色"`
 	Name      string `p:"name" v:"required#角色名称不能为空"`
 	Status    uint   `p:"status"    `
 	ListOrder uint   `p:"listOrder" `
@@ -42,7 +42,7 @@ type RoleAddRes struct {
 }
 
 type RoleGetReq struct {
-	g.Meta `path:"/role/get" tags:"角色管理" method:"get" summary:"获取角色信息"`
+	g.Meta `path:"/role" tags:"角色管理" method:"get" summary:"获取角色信息"`
 	Id     uint `p:"id" v:"required#角色id不能为空""`
 }
 
@@ -53,7 +53,7 @@ type RoleGetRes struct {
 }
 
 type RoleEditReq struct {
-	g.Meta    `path:"/role/edit" tags:"角色管理" method:"put" summary:"修改角色"`
+	g.Meta    `path:"/role" tags:"角色管理" method:"put" summary:"修改角色"`
 	Id        int64  `p:"id" v:"required#角色id必须"`
 	Name      string `p:"name" v:"required#角色名称不能为空"`
 	Status    uint   `p:"status"    `
@@ -66,7 +66,7 @@ type RoleEditRes struct {
 }
 
 type RoleDeleteReq struct {
-	g.Meta `path:"/role/delete" tags:"角色管理" method:"delete" summary:"删除角色"`
+	g.Meta `path:"/role" tags:"角色管理" method:"delete" summary:"删除角色"`
 	Ids    []int64 `p:"ids" v:"required#角色id不能为空"`
 }
 
