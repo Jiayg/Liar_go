@@ -3,6 +3,7 @@ package router
 import (
 	"github.com/jiayg/liar/internal/controller"
 	"github.com/jiayg/liar/internal/middleware"
+	"github.com/jiayg/liar/internal/service"
 
 	"github.com/gogf/gf/v2/net/ghttp"
 )
@@ -10,8 +11,9 @@ import (
 func BindController(group *ghttp.RouterGroup) {
 	group.Group("/api/v1", func(group *ghttp.RouterGroup) {
 		group.Middleware(ghttp.MiddlewareHandlerResponse)
-		group.Middleware(middleware.Middleware().MiddlewareCORS)
+		group.Middleware(middleware.Middleware().CORS)
 		demoRouter(group)
+		authRouter(group)
 		sysRouter(group)
 	})
 
@@ -25,9 +27,9 @@ func sysRouter(group *ghttp.RouterGroup) {
 		// 	controller.DbInit,
 		// )
 		//登录验证拦截
-		// service.GfToken().Middleware(group)
+		service.GfToken().Middleware(group)
 		//context拦截器
-		// group.Middleware(service.Middleware().Ctx, service.Middleware().Auth)
+		group.Middleware(middleware.Middleware().Ctx, middleware.Middleware().Auth)
 		group.Bind(
 			controller.User,
 			controller.Role,
@@ -40,6 +42,15 @@ func demoRouter(group *ghttp.RouterGroup) {
 	group.Group("/demo", func(group *ghttp.RouterGroup) {
 		group.Bind(
 			controller.Demo,
+		)
+	})
+}
+
+// 绑定auth路由
+func authRouter(group *ghttp.RouterGroup) {
+	group.Group("/auth", func(group *ghttp.RouterGroup) {
+		group.Bind(
+			controller.Auth,
 		)
 	})
 }

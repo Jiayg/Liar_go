@@ -12,7 +12,6 @@ pkg/
 bin/
 cbuild
 **/.DS_Store
-# .vscode/
 .test/
 main
 output/

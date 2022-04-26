@@ -53,7 +53,7 @@ type UserGetRes struct {
 }
 
 type UserSearchReq struct {
-	g.Meta   `path:"/user/list" tags:"用户管理" method:"get" summary:"用户列表"`
+	g.Meta   `path:"/user" tags:"用户管理" method:"get" summary:"用户分页列表"`
 	DeptId   string `p:"deptId"` //部门id
 	Mobile   string `p:"mobile"`
 	Status   string `p:"status"`

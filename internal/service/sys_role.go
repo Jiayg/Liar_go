@@ -15,7 +15,7 @@ import (
 
 type IRole interface {
 	GetRoleList(ctx context.Context) (list []*entity.SysRole, err error)
-	GetRoleListSearch(ctx context.Context, req *apiv1.RoleListReq) (res *apiv1.RoleListRes, err error)
+	GetPageList(ctx context.Context, req *apiv1.RoleListReq) (res *apiv1.RoleListRes, err error)
 	// AddRole(ctx context.Context, req *apiv1.RoleAddReq) (err error)
 	// Get(ctx context.Context, id uint) (res *entity.SysRole, err error)
 	// GetFilteredNamedPolicy(ctx context.Context, id uint) (gpSlice []int, err error)
@@ -115,7 +115,7 @@ func (s *roleImpl) getRolesFromDb(ctx context.Context) (value interface{}, err e
 }
 
 // 获取角色分页列表
-func (s *roleImpl) GetRoleListSearch(ctx context.Context, req *apiv1.RoleListReq) (res *apiv1.RoleListRes, err error) {
+func (s *roleImpl) GetPageList(ctx context.Context, req *apiv1.RoleListReq) (res *apiv1.RoleListRes, err error) {
 	res = new(apiv1.RoleListRes)
 	g.Try(func() {
 		model := dao.SysRole.Ctx(ctx)

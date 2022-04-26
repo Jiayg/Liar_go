@@ -38,20 +38,20 @@ func (c *userController) Get(ctx context.Context, req *apiv1.UserGetReq) (res *a
 	return
 }
 
-// TODO 需要重构，多角色数据一起查询
+// TODO 需要重构
 // 获取用户列表
-func (c *userController) List(ctx context.Context, req *apiv1.UserSearchReq) (res *apiv1.UserSearchRes, err error) {
+func (c *userController) GetPageList(ctx context.Context, req *apiv1.UserSearchReq) (res *apiv1.UserSearchRes, err error) {
 	var (
 		total int
 		list  []*entity.SysUser
 	)
 	res = new(apiv1.UserSearchRes)
-	total, list, err = service.User().List(ctx, req)
+	total, list, err = service.User().GetPageList(ctx, req)
 	if err != nil || total == 0 {
 		return
 	}
 	res.Total = total
-	res.UserList, err = service.User().GetUsersRoleDept(ctx, list)
+	res.UserList, err = service.User().GetUserRolesDepts(ctx, list)
 	return
 }
 

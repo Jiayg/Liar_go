@@ -33,6 +33,8 @@ github.com/gogf/gf v1.16.7/go.mod h1:8Q/kw05nlVRp+4vv7XASBsMe9L1tsVKiGoeP2AHnlkk
 github.com/gogf/gf/v2 v2.0.0-rc.0.20220117131058-9345eb5e946f/go.mod h1:apktt6TleWtCIwpz63vBqUnw8MX8gWKoZyxgDpXFtgM=
 github.com/gogf/gf/v2 v2.0.0-rc3 h1:FkmLFhgOCZnyr24H/Yj9V1psS7fJ79DtPuSz+l/kwsc=
 github.com/gogf/gf/v2 v2.0.0-rc3/go.mod h1:apktt6TleWtCIwpz63vBqUnw8MX8gWKoZyxgDpXFtgM=
+github.com/golang-jwt/jwt v3.2.2+incompatible h1:IfV12K8xAKAnZqdXVzCZ+TOjboZ2keLg81eXfW3O+oY=
+github.com/golang-jwt/jwt v3.2.2+incompatible/go.mod h1:8pz2t5EyA70fFQQSrl6XZXzqecmYZeUEB8OUGHkxJ+I=
 github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 h1:DACJavvAHhabrF08vX0COfcOBJRhZ8lUbR+ZWIs0Y5g=
 github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0/go.mod h1:E/TSTwGwJL78qG/PmXZO1EjYhfJinVAhrmmHX6Z8B9k=
 github.com/golang/mock v1.4.4 h1:l75CXGRSwbaYNpl/Z2X1XIIAMSCquvXgpVZDhwEIJsc=
@@ -101,6 +103,8 @@ github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5Cc
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/tiger1103/gfast-cache v0.0.7 h1:YRuSFxFdvNlIsHAndS7XjYRLd4tmXGWhvHt9rK0LVT0=
 github.com/tiger1103/gfast-cache v0.0.7/go.mod h1:s6cRWyr87wz6IJNGKRV6Ahq9hcuVz8h2PAtGrO66JO8=
+github.com/tiger1103/gfast-token v0.0.9 h1:+cKNu4zAMZpqaeILy3QIjuEO0HQMXtMSqVGPmhKAP90=
+github.com/tiger1103/gfast-token v0.0.9/go.mod h1:RnVRqmWD3h4qfTU1vJNXNhQjh2L5ht1vxLnjwShwGuY=
 github.com/yuin/goldmark v1.2.1/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.4.0/go.mod h1:mwnBkeHKe2W/ZEtQ+71ViKU8L12m81fl3OWwC1Zlc8k=
 go.opentelemetry.io/otel v1.0.0 h1:qTTn6x71GVBvoafHK/yaRUmFzI4LcONZD0/kXxl5PHI=

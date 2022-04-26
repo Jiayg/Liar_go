@@ -26,8 +26,8 @@ type IUser interface {
 	Delete(ctx context.Context, ids []int) (err error)
 	Update(ctx context.Context, req *apiv1.UserUpdateReq) (err error)
 	Get(ctx context.Context, id uint64) (res *apiv1.UserGetRes, err error)
-	List(ctx context.Context, req *apiv1.UserSearchReq) (total int, list []*entity.SysUser, err error)
-	GetUsersRoleDept(ctx context.Context, list []*entity.SysUser) (users []*model.SysUserRoleDeptRes, err error)
+	GetPageList(ctx context.Context, req *apiv1.UserSearchReq) (total int, list []*entity.SysUser, err error)
+	GetUserRolesDepts(ctx context.Context, list []*entity.SysUser) (users []*model.SysUserRoleDeptRes, err error)
 	GetUserMenus(ctx context.Context, userId uint64) (menuList []*model.UserMenus, permissions []string, err error)
 	ChangeStatus(ctx context.Context, req *apiv1.UserStatusReq) (err error)
 	ResetPwd(ctx context.Context, req *apiv1.UserResetPwdReq) (err error)
@@ -220,7 +220,7 @@ func (s *userImpl) Get(ctx context.Context, id uint64) (res *apiv1.UserGetRes, e
 }
 
 // 获取用户分页列表
-func (s *userImpl) List(ctx context.Context, req *apiv1.UserSearchReq) (total int, list []*entity.SysUser, err error) {
+func (s *userImpl) GetPageList(ctx context.Context, req *apiv1.UserSearchReq) (total int, list []*entity.SysUser, err error) {
 	err = g.Try(func() {
 		model := dao.SysUser.Ctx(ctx)
 		if req.KeyWords != "" {
@@ -257,7 +257,7 @@ func (s *userImpl) List(ctx context.Context, req *apiv1.UserSearchReq) (total in
 }
 
 // 获取用户角色 部门信息
-func (s *userImpl) GetUsersRoleDept(ctx context.Context, list []*entity.SysUser) (users []*model.SysUserRoleDeptRes, err error) {
+func (s *userImpl) GetUserRolesDepts(ctx context.Context, list []*entity.SysUser) (users []*model.SysUserRoleDeptRes, err error) {
 	err = g.Try(func() {
 		allRoles, e := Role().GetRoleList(ctx)
 		liberr.ErrIsNil(ctx, e)
