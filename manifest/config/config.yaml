@@ -63,7 +63,7 @@ system:
   dataDir: "./resource/data"
   cache:
     model: "redis" #缓存模式 memory OR redis
-    prefix: "gFastV3Cache_" #缓存前缀
+    prefix: "liarCache_" #缓存前缀
 
 #casbin配置
 casbin:

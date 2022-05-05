@@ -8,11 +8,9 @@ import (
 	"github.com/jiayg/liar/internal/service"
 )
 
-var User = userController{}
+var User = new(userController)
 
-type userController struct {
-	BaseController
-}
+type userController struct{}
 
 // 添加用户
 func (c *userController) Add(ctx context.Context, req *apiv1.UserAddReq) (res *apiv1.UserAddRes, err error) {

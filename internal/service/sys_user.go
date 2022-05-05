@@ -313,8 +313,8 @@ func (s *userImpl) GetUserMenus(ctx context.Context, userId uint64) (menuList []
 		if isSuperAdmin {
 			//超管获取所有菜单
 			permissions = []string{"*/*/*"}
-			// menuList, err = s.GetAllMenus(ctx)
-			// liberr.ErrIsNil(ctx, err)
+			menuList, err = roleService.getRolesMenus(ctx)
+			liberr.ErrIsNil(ctx, err)
 		} else {
 			// menuList, err = s.GetAdminMenusByRoleIds(ctx, roleIds)
 			// liberr.ErrIsNil(ctx, err)

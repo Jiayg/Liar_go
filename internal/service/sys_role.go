@@ -5,11 +5,13 @@ import (
 
 	"github.com/jiayg/liar/apiv1"
 	"github.com/jiayg/liar/internal/consts"
+	"github.com/jiayg/liar/internal/model"
 	"github.com/jiayg/liar/internal/model/entity"
 	"github.com/jiayg/liar/internal/service/internal/dao"
 	"github.com/jiayg/liar/library/liberr"
 
 	"github.com/gogf/gf/v2/frame/g"
+	"github.com/gogf/gf/v2/text/gstr"
 	"github.com/gogf/gf/v2/util/gconv"
 )
 
@@ -71,6 +73,35 @@ func (s *roleImpl) getRolesByUserId(ctx context.Context, userId uint64, allRoleL
 	return
 }
 
+// 获取树状菜单
+func (s *roleImpl) getMenusTree(menus []*model.UserMenus, pid uint) []*model.UserMenus {
+	returnList := make([]*model.UserMenus, 0, len(menus))
+	for _, menu := range menus {
+		if menu.Pid == pid {
+			menu.Children = s.getMenusTree(menus, menu.Id)
+			returnList = append(returnList, menu)
+		}
+	}
+	return returnList
+}
+
+// 获取多角色菜单
+func (s *roleImpl) getRolesMenus(ctx context.Context) (menus []*model.UserMenus, err error) {
+	// 获取所有开启的菜单
+	allMenus, err := authRuleService.GetIsMenuList(ctx)
+	if err != nil {
+		return
+	}
+	menus = make([]*model.UserMenus, len(allMenus))
+	for k, v := range allMenus {
+		var menu *model.UserMenu
+		menu = s.setMenuData(menu, v)
+		menus[k] = &model.UserMenus{UserMenu: menu}
+	}
+	menus = s.getMenusTree(menus, 0)
+	return
+}
+
 // 添加角色
 func (s *roleImpl) addRole(ctx context.Context, roleIds []int64, userId int64) (err error) {
 	err = g.Try(func() {
@@ -98,6 +129,30 @@ func (s *roleImpl) updRole(ctx context.Context, roleIds []int64, userId int64) (
 		}
 	})
 	return
+}
+
+// 组装菜单数据
+func (s *roleImpl) setMenuData(menu *model.UserMenu, entity *model.SysAuthRuleInfoRes) *model.UserMenu {
+	menu = &model.UserMenu{
+		Id:        entity.Id,
+		Pid:       entity.Pid,
+		Name:      gstr.CaseCamelLower(gstr.Replace(entity.Name, "/", "_")),
+		Component: entity.Component,
+		Path:      entity.Path,
+		MenuMeta: &model.MenuMeta{
+			Icon:        entity.Icon,
+			Title:       entity.Title,
+			IsLink:      "",
+			IsHide:      entity.IsHide == 1,
+			IsKeepAlive: entity.IsCached == 1,
+			IsAffix:     entity.IsAffix == 1,
+			IsIframe:    entity.IsIframe == 1,
+		},
+	}
+	if menu.MenuMeta.IsIframe || entity.IsLink == 1 {
+		menu.MenuMeta.IsLink = entity.LinkUrl
+	}
+	return menu
 }
 
 // 从数据库获取所有角色

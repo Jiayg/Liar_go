@@ -16,8 +16,7 @@ import (
 
 var Auth = authController{}
 
-type authController struct {
-}
+type authController struct{}
 
 // 验证码
 func (c *authController) Captcha(ctx context.Context, req *apiv1.CaptchaReq) (res *apiv1.CaptchaRes, err error) {

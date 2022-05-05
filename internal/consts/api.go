@@ -1,8 +1,8 @@
 package consts
 
 var (
-	OpenAPITitle       = `GFast-v3`
-	OpenAPIDescription = `基于 GoFrame2.0的后台管理系统。 Enjoy 💖 `
-	OpenAPIContactName = "GFast"
-	OpenAPIContactUrl  = "http://www.g-fast.cn"
+	OpenAPITitle       = `Liar`
+	OpenAPIDescription = `基于GoFrame2.0的后台管理系统。 Enjoy 💖 `
+	OpenAPIContactName = "Liar"
+	OpenAPIContactUrl  = "https://goframe.org/"
 )
